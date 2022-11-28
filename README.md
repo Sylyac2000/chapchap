@@ -14,3 +14,5 @@ CHAPCHAP is an ecommerce web application project i did at ALX AFRICA.
 ## Authors
 Sylla Yacouba - [Github](https://github.com/Sylyac2000) / [Twitter](https://twitter.com/sylyac2000)    
 
+#### Challenges
+* some challenge concerning the log in process

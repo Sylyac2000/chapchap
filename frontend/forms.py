@@ -1,6 +1,7 @@
 """Forms in frontend app """
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from django.core.validators import validate_email
 
 from frontend.models import Utilisateur
 
@@ -17,16 +18,22 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = Utilisateur
         fields = (
-            'username',
+            'email',
             'password',
         )
 
     error_messages = {}
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
+    def clean_email(self):
+        username = self.cleaned_data['email']
         if username is None:
             raise forms.ValidationError(f"Username {username} est requis")
+        try:
+            username = validate_email(username)
+        except:
+            raise forms.ValidationError(f"{username} n'est pas un email valide")
+
+
         return username
 
     def clean_password(self):
@@ -37,3 +44,8 @@ class LoginForm(AuthenticationForm):
 
     def get_invalid_login_error(self):
         raise forms.ValidationError("Login et/ou mot de passe incorrecte")
+
+
+
+class SignupForm(forms.Form):
+    pass

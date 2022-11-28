@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}CHAPCHAP || Sign In{% endblock %}
+{% load static%}
+{% block title %} CHAPCHAP|| Sign Up {% endblock %}
+
 {% block css %}
 {# add some css link here#}
     <!-- CSS
@@ -18,8 +19,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/vendor/base.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
 {% endblock %}
-{% block content %}
 
+{% block content %}
 
 
     <div class="axil-signin-area">
@@ -27,13 +28,13 @@
         <!-- Start Header -->
         <div class="signin-header">
             <div class="row align-items-center">
-                <div class="col-sm-4">
+                <div class="col-md-6">
                     <a href="index.html" class="site-logo"><img src="{% static 'assets/images/logo/logo.png' %}" alt="logo"></a>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-md-6">
                     <div class="singin-header-btn">
-                        <p>Not a member?dd</p>
-                        <a href="{% url 'frontend:signup'%}" class="axil-btn btn-bg-secondary sign-up-btn">Sign Up Now</a>
+                        <p>Already a member?</p>
+                        <a href="{% url 'frontend:login' %}" class="axil-btn btn-bg-secondary sign-up-btn">Sign In</a>
                     </div>
                 </div>
             </div>
@@ -42,46 +43,30 @@
 
         <div class="row">
             <div class="col-xl-4 col-lg-6">
-                <div class="axil-signin-banner bg_image bg_image--9">
+                <div class="axil-signin-banner bg_image bg_image--10">
                     <h3 class="title">We Offer the Best Products</h3>
                 </div>
             </div>
             <div class="col-lg-6 offset-xl-2">
                 <div class="axil-signin-form-wrap">
                     <div class="axil-signin-form">
-                        <h3 class="title">Sign in to CHAPCHAP.</h3>
+                        <h3 class="title">I'm New Here</h3>
                         <p class="b2 mb--55">Enter your detail below</p>
-                         {% for message in messages %}
-                          <div class="alert alert-danger mb--55 b2">
-                            {{ message }}
-
-                          </div>
-                          {% endfor %}
-
-                           {% for error in form.non_field_errors %}
-                              <div class="alert alert-danger  mb-3">
-                                {{ error}}
-                              </div>
-                           {% endfor %}
-                        <form method="post" class="singin-form mt-1">
-                            {% csrf_token %}
+                        <form class="singin-form">
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input type="text" class="form-control" name="username" value="anniemario">
+                            </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" name="username" value="admin@admin.com" id="username">
-								{% for error in form.username.errors %}
-                                    <small class="h1 text-danger ml-3">{{ error }}</small>
-                                {% endfor %}
+                                <input type="email" class="form-control" name="email" value="annie@example.com">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password" value="123456789">
-								{% for error in form.password.errors %}
-                                    <small class="h1 text-danger ml-3">{{ error }}</small>
-                                {% endfor %}
                             </div>
-                            <div class="form-group d-flex align-items-center justify-content-between">
-                                <button type="submit" class="axil-btn btn-bg-primary submit-btn">Sign In</button>
-                                <a href="forgot-password.html" class="forgot-btn">Forget password?</a>
+                            <div class="form-group">
+                                <button type="submit" class="axil-btn btn-bg-primary submit-btn">Create Account</button>
                             </div>
                         </form>
                     </div>
@@ -91,6 +76,27 @@
     </div>
 
     <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/js.cookie.js"></script>
+    <!-- <script src="assets/js/vendor/jquery.style.switcher.js"></script> -->
+    <script src="assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="assets/js/vendor/jquery.countdown.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="assets/js/vendor/counterup.js"></script>
+    <script src="assets/js/vendor/waypoints.min.js"></script>
 
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
 
 {% endblock %}

@@ -6,22 +6,27 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 class UtilisateurAccountManager(BaseUserManager):
 
-    def create_user(self, email, username, password=None):
+    def create_user(self, nom, prenom, email, telephone, password=None):
+        if not nom:
+            raise ValueError("Nom requis")
+        if not prenom:
+            raise ValueError("prénom requis")
         if not email:
             raise ValueError("Email requis")
-        if not username:
-            raise ValueError("username requis")
+        if not telephone:
+            raise ValueError("téléphone requis")
         email = self.normalize_email(email)
 
-        user = self.model(email=email,username=username)
+        user = self.model(nom=nom, prenom=prenom, email=email,telephone=telephone)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,email, username, password):
+    def create_superuser(self, nom, prenom, email, telephone, password):
+
         email = self.normalize_email(email)
 
-        user = self.create_user(email=email, username=username, password=password)
+        user = self.create_user(nom=nom, prenom=prenom, email=email, telephone=telephone, password=password)
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
@@ -43,7 +48,7 @@ class Utilisateur(AbstractBaseUser, PermissionsMixin):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     email                = models.EmailField(verbose_name="email", max_length=100, unique=True)
-    username                = models.CharField( max_length=50, unique=True)
+    telephone                = models.CharField( max_length=50, unique=True)
     date_joined                = models.DateTimeField( verbose_name="date joined", auto_now_add=True)
     last_login                = models.DateTimeField( verbose_name="last login", auto_now=True)
     is_admin                = models.BooleanField( default=False)
@@ -56,13 +61,11 @@ class Utilisateur(AbstractBaseUser, PermissionsMixin):
     objects = UtilisateurAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['nom', 'prenom', 'telephone']
 
     def __str__(self):
-        return self.username
+        return self.nom + self.prenom + self.telephone
 
-    def has_perm(self, perm, obj=None):
-        return self.is_admin
 
     # has admin permission?
     def has_perm(self, perm, obj=None):
