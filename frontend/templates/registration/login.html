@@ -59,7 +59,7 @@
                           {% endfor %}
 
                            {% for error in form.non_field_errors %}
-                              <div class="alert alert-danger  mb-3">
+                              <div class="alert alert-danger  mb-4">
                                 {{ error}}
                               </div>
                            {% endfor %}
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="password" value="123456789">
+                                <input type="password" class="form-control" name="password" value="">
 								{% for error in form.password.errors %}
                                     <small class="h1 text-danger ml-3">{{ error }}</small>
                                 {% endfor %}

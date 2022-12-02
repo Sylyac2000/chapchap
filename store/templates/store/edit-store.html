@@ -1,9 +1,9 @@
-{% extends 'base.html'%}
-{% load static%}
-{% block title %}CHAPCHAP|| Dashboard  {% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CHAPCHAP|| Add Store  {% endblock %}
 
 {% block css %}
-{# add some css link here#}
+    {# add some css link here#}
     <!-- CSS
     ============================================ -->
 
@@ -23,7 +23,7 @@
 
 {% block content %}
 
-{% include 'myaccount/myheader.html' %}
+    {% include 'myaccount/myheader.html' %}
 
     <main class="main-wrapper">
         <!-- Start Breadcrumb Area  -->
@@ -64,6 +64,7 @@
                             <div class="media-body">
                                 <h5 class="title mb-0">Hello {{ request.user.nom }}</h5>
                                 <span class="joining-date d-none">chapchap Member Since Sep request.user.date_joined</span>
+
                             </div>
                         </div>
                     </div>
@@ -80,61 +81,110 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="nav-dashboard" role="tabpanel">
                                     <div class="axil-dashboard-overview">
-                                        <div class="welcome-text">Hello {{ request.user.nom }} (not <span>{{ request.user.nom }}?</span> <a href="{% url 'myaccount:logout' %}">Log Out</a>)</div>
-                                        <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
+                                        <div class="h2">Edit a store</div>
+                                        <hr/>
+                                        {% for msg in messages %}
+                                            <div class="alert alert-success">
+                                              <h5 class="alert-title"><i class="fas fa-check"></i> Succès</h5>
+                                                       {{ msg }}
+                                            </div>
+
+
+                                        {% endfor %}
+                                        <form method="POST" enctype="multipart/form-data">
+
+                                            {% csrf_token %}
+                                            <div class="row row--10">
+
+                                                {% for field in form %}
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 form-label"
+                                                                   for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                                            {{ field }}
+                                                        </div>
+                                                        {% for error in field.errors %}
+                                                            <div class="alert alert-danger ml-3">{{ error }}</div>
+                                                        {% endfor %}
+
+                                                    </div>
+                                                    <div class="row">
+                                                    {% if field.name == 'photo' %}
+                                                        <img src="{{ field.value.url }}" class="img-fluid m-2" alt="{{ field.name }}">
+                                                    {% endif  %}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group mb--0">
+                                                    <button name="submit" type="submit" id="submit"
+                                                            class="axil-btn btn-bg-primary">Save
+
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row row--10 d-none">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label for="contact-name">Name
+                                                            <span>*</span></label>
+                                                        <input type="text" name="contact-name"
+                                                               id="contact-name">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label for="contact-phone">Photo <span>*</span></label>
+                                                        <input type="file" name="contact-phone"
+                                                               id="contact-phone">
+                                                    </div>
+                                                </div>
+                                                <div class="row d-none">
+                                                    <div class="form-group">
+                                                        <label for="contact-message">
+                                                            Description</label>
+                                                        <textarea name="contact-message"
+                                                                  id="contact-message" cols="1"
+                                                                  rows="2"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-orders" role="tabpanel">
                                     <div class="axil-dashboard-order">
                                         <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Order</th>
-                                                        <th scope="col">Date</th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Total</th>
-                                                        <th scope="col">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>On Hold</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="contact-form">
+                                                        <h3 class="title mb--10">We would love to hear from you.</h3>
+                                                        <p>If you’ve got great products your making or looking to work
+                                                            with us then drop us a line.</p>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="contact-location mb--40">
+                                                        <h4 class="title mb--20">Our Store</h4>
+                                                        <span class="address mb--20">8212 E. Glen Creek Street Orchard Park, NY 14127, United States of America</span>
+                                                        <span class="phone">Phone: +123 456 7890</span>
+                                                        <span class="email">Email: Hello@etrade.com</span>
+                                                    </div>
+                                                    <div class="contact-career mb--40">
+                                                        <h4 class="title mb--20">Careers</h4>
+                                                        <p>Instead of buying six things, one that you really like.</p>
+                                                    </div>
+                                                    <div class="opening-hour">
+                                                        <h4 class="title mb--20">Opening Hours:</h4>
+                                                        <p>Monday to Saturday: 9am - 10pm
+                                                            <br> Sundays: 10am - 6pm
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +195,8 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-address" role="tabpanel">
                                     <div class="axil-dashboard-address">
-                                        <p class="notice-text">The following addresses will be used on the checkout page by default.</p>
+                                        <p class="notice-text">The following addresses will be used on the checkout page
+                                            by default.</p>
                                         <div class="row row--30">
                                             <div class="col-lg-6">
                                                 <div class="address-info mb--40">
@@ -158,7 +209,8 @@
                                                         <li>Email: annie@example.com</li>
                                                         <li>Phone: 1234 567890</li>
                                                         <li class="mt--30">7398 Smoke Ranch Road <br>
-                                                        Las Vegas, Nevada 89128</li>
+                                                            Las Vegas, Nevada 89128
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -173,7 +225,8 @@
                                                         <li>Email: annie@example.com</li>
                                                         <li>Phone: 1234 567890</li>
                                                         <li class="mt--30">7398 Smoke Ranch Road <br>
-                                                        Las Vegas, Nevada 89128</li>
+                                                            Las Vegas, Nevada 89128
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -206,14 +259,16 @@
                                                                 <option value="1">United Arab Emirates (UAE)</option>
                                                                 <option value="1">Australia</option>
                                                             </select>
-                                                            <p class="b3 mt--10">This will be how your name will be displayed in the account section and in reviews</p>
+                                                            <p class="b3 mt--10">This will be how your name will be
+                                                                displayed in the account section and in reviews</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <h5 class="title">Password Change</h5>
                                                         <div class="form-group">
                                                             <label>Password</label>
-                                                            <input type="password" class="form-control" value="123456789101112131415">
+                                                            <input type="password" class="form-control"
+                                                                   value="123456789101112131415">
                                                         </div>
                                                         <div class="form-group">
                                                             <label>New Password</label>
@@ -261,10 +316,10 @@
         <!-- End Axil Newsletter Area  -->
     </main>
 
-{% include 'myaccount/footer.html' %}
+    {% include 'myaccount/footer.html' %}
 
 
-{% include 'myaccount/cart-dropdown.html' %}
+    {% include 'myaccount/cart-dropdown.html' %}
 
 
 

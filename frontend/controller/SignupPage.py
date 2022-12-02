@@ -14,8 +14,8 @@ def inscription(request):
     return render(request, 'registration/signup.html')
 
 class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+    form_class = SignupForm
+    success_url = reverse_lazy('frontend:login')
     template_name = 'registration/signup.html'
 
 class UtilisateurCreatePageView(LoginRequiredMixin, CreateView):
