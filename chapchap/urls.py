@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('myaccount/', include('myaccount.urls')),
     path('store/', include('store.urls')),
+    path('summernote/', include('django_summernote.urls')), # for summernote
 ]
 if settings.DEBUG:
     #urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -3,13 +3,17 @@
             class="fas fa-th-large"></i>Dashboard</a>
     <a class="nav-item nav-link" href="{% url 'store:list-store' %}" role="tab" aria-selected="false"><i
             class="fas fa-shopping-bag"></i>Store</a>
+        {% if has_stores %}
+        <a class="nav-item nav-link" href="{% url 'store:list-product' %}" role="tab" aria-selected="false"><i
+            class="fas fa-shopping-basket"></i>Products</a>
+        {% endif %}
     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab" aria-selected="false"><i
-            class="fas fa-shopping-basket"></i>Orders</a>
-    <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-downloads" role="tab" aria-selected="false"><i
+            class="fas fa-file-download"></i>Orders</a>
+    {% comment %}<a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-downloads" role="tab" aria-selected="false"><i
             class="fas fa-file-download"></i>Downloads</a>
     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address" role="tab" aria-selected="false"><i
             class="fas fa-home"></i>Addresses</a>
     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account" role="tab" aria-selected="false"><i
-            class="fas fa-user"></i>Account Details</a>
+            class="fas fa-user"></i>Account Details</a>{% endcomment %}
     <a class="nav-item nav-link" href="{% url 'myaccount:logout' %}"><i class="fal fa-sign-out"></i>Logout</a>
 </div>

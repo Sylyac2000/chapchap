@@ -1,5 +1,7 @@
 """controller actions, """
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 
 # Create your views here.
@@ -15,3 +17,4 @@ def dashboard(request):
         'request': request
     }
     return render(request, 'myaccount/dashboard.html', context)
+

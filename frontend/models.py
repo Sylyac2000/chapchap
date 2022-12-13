@@ -64,7 +64,7 @@ class Utilisateur(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['nom', 'prenom', 'telephone']
 
     def __str__(self):
-        return self.nom + self.prenom + self.telephone
+        return self.nom + " " + self.prenom + " " +self.telephone
 
 
     # has admin permission?

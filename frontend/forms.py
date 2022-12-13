@@ -6,6 +6,10 @@ from django.utils.safestring import mark_safe
 
 from frontend.models import Utilisateur
 
+"""
+class ResetPasswordForm(AuthenticationForm):
+
+"""
 
 class LoginForm(AuthenticationForm):
 
