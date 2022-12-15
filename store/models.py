@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """ Models of store application"""
 
+
 from django.db import models
 from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill
