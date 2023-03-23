@@ -1,6 +1,6 @@
 """Forms in frontend app """
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm, UserChangeForm
 from django.core.validators import validate_email
 from django.utils.safestring import mark_safe
 
@@ -96,3 +96,17 @@ class SignupForm(UserCreationForm):
             raise forms.ValidationError(f"Username {username} est déja utilisé")
 
         return username
+
+class CustomUtilisateurChangeForm(UserChangeForm):
+    """class to edit utilisateur password in admin"""
+    password1 = None
+    password2 = None
+
+    class Meta:
+        model = Utilisateur
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password'].widget = forms.PasswordInput()
+

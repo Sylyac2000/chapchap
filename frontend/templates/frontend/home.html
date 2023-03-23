@@ -305,7 +305,7 @@
                                         </span>
                                                 <span class="rating-number">(64)</span>
                                             </div>
-                                            <h5 class="title"><a href="single-product.html">{{ store.name }}</a></h5>
+                                            <h5 class="title"><a href="{% url 'frontend:detail-store' store.code %}">{{ store.name }}</a></h5>
                                             <div class="product-price-variant d-none">
                                                 <span class="price current-price">$29.99</span>
                                                 <span class="price old-price">$49.99</span>

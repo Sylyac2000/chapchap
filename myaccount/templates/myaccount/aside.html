@@ -2,10 +2,13 @@
     <a class="nav-item nav-link active" href="{% url 'myaccount:dashboard' %}"><i
             class="fas fa-th-large"></i>Dashboard</a>
     <a class="nav-item nav-link" href="{% url 'store:list-store' %}" role="tab" aria-selected="false"><i
-            class="fas fa-shopping-bag"></i>Store</a>
+            class="fas fa-shopping-bag"></i>My Stores</a>
         {% if has_stores %}
-        <a class="nav-item nav-link" href="{% url 'store:list-product' %}" role="tab" aria-selected="false"><i
+            <a class="nav-item nav-link d-none" href="{% url 'store:list-store-qrcode'%}" role="tab"><i
+            class="fas fa-file-download"></i>My QRcodes</a>
+            <a class="nav-item nav-link" href="{% url 'store:list-product' %}" role="tab" aria-selected="false"><i
             class="fas fa-shopping-basket"></i>Products</a>
+
         {% endif %}
     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab" aria-selected="false"><i
             class="fas fa-file-download"></i>Orders</a>

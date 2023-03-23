@@ -67,16 +67,16 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" name="username" id="username">
+                                <input type="email" class="form-control"  name="username" id="username" {% if form.is_bound %} value="{{ form.username.value }}" {% endif %} />
 								{% for error in form.username.errors %}
-                                    <small class="h1 text-danger ml-3">{{ error }}</small>
+                                    <small class="text-danger ml-3">{{ error }}</small>
                                 {% endfor %}
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="password" value="">
+                                <input type="password" class="form-control" name="password" {% if form.is_bound %} value="{{ form.password.value }}"{% endif %} />
 								{% for error in form.password.errors %}
-                                    <small class="h1 text-danger ml-3">{{ error }}</small>
+                                    <small class="text-danger ml-3">{{ error }}</small>
                                 {% endfor %}
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">

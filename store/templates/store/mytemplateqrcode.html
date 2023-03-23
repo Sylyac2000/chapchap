@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CHAPCHAP|| Add Store  {% endblock %}
+
+{% block css %}
+    {# add some css link here#}
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/sal.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/base.css' %}">
+    <link href="{% static 'assets/vendor/datatables/datatables.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/chapchap.css' %}">
+    <style>
+    .red {
+        color: red;
+        text-align: center;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+        <div class="axil-dashboard-area axil-section-gap">
+            <div class="container">
+
+<h1 class="red text-center">Salam</h1>
+<img class="w-50 text-center" src="data:image/png;base64,{{ base64_image }}" alt="QR code">
+            </div>
+            </div>
+{% endblock %}

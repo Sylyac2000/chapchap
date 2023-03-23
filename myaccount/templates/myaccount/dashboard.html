@@ -57,7 +57,7 @@
         <div class="axil-dashboard-area axil-section-gap">
             <div class="container">
                 <div class="axil-dashboard-warp">
-                    <div class="axil-dashboard-author">
+                    <div class="axil-dashboard-author d-none">
                         <div class="media">
                             <div class="thumbnail">
                                 <img src="{% static 'assets/images/product/author1.png' %}" alt="Hello Annie">
@@ -81,7 +81,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="nav-dashboard" role="tabpanel">
                                     <div class="axil-dashboard-overview">
-                                        <div class="welcome-text">Hello {{ request.user.nom }} (not <span>{{ request.user.nom }}?</span> <a href="{% url 'myaccount:logout' %}">Log Out</a>)</div>
+                                        <div class="welcome-text">Hello {{ request.user.nom }}</div>
                                         <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
                                     </div>
                                 </div>

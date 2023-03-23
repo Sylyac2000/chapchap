@@ -58,7 +58,7 @@
         <div class="axil-dashboard-area axil-section-gap">
             <div class="container">
                 <div class="axil-dashboard-warp">
-                    <div class="axil-dashboard-author">
+                    <div class="axil-dashboard-author d-none">
                         <div class="media">
                             <div class="thumbnail">
                                 <img src="{% static 'assets/images/product/author1.png' %}" alt="Hello Annie">
@@ -109,7 +109,7 @@
                                                 <td><img src="{{store.photo_thumbnail.url}}" /></td>
                                                 <td>{{ store.name }}</td>
                                                 <td>{{ store.datecreation }}</td>
-                                                <td><a href="{% url 'store:edit-store' store.pk %}"><i class="fas fa-edit"></i></a>  &nbsp;   <a href="{% url 'store:del-store'  store.pk %}"><i class="fas fa-trash"></i></a></td>
+                                                <td><a target="_blank" data-toggle="tooltip" title="QRCode" href="{% url 'store:generate-pdf' store.code %}"><i class="fas fa-qrcode"></i></a>&nbsp;   <a href="{% url 'store:edit-store' store.pk %}"  data-toggle="tooltip" title=" edit a store"><i class="fas fa-edit"></i></a>  &nbsp;   <a href="{% url 'store:del-store'  store.pk %}" data-toggle="tooltip" title=" delete a store"><i class="fas fa-trash"></i></a></td>
 
                                             </tr>
                                         {% endfor %}
@@ -318,31 +318,32 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
 
     <script>
-$(document).ready(function () {
+        $(document).ready(function () {
 
-          //alert("zeezez")
-         $('#sidebar').toggleClass('active');
-        $('#body').toggleClass('active');
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#sidebar').toggleClass('active');
+            $('#body').toggleClass('active');
 
-         $('#tablostore').DataTable({ "language": {
-            "url": "{% static 'assets/js/fr_fr.json' %}"
-            },
-                     dom: "lBfrtip",
-              buttons: [
-              {
+            $('#tablostore').DataTable({
+                "language": {
+                    "url": "{% static 'assets/js/fr_fr.json' %}"
+                },
+                dom: "lBfrtip",
+                buttons: [
+                    {
                         extend: 'excelHtml5',
-                        title: 'Liste des assignations'
+                        title: 'List of stores'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Liste des assignations',
+                        title: 'List of stores',
                         orientation: 'landscape'
                     }
-              ],
+                ],
             });
 
 
-    });
+        });
     </script>
 
 

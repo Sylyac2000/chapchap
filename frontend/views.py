@@ -1,11 +1,11 @@
+#!/usr/bin/python3
 """ frontend view
 """
-
-
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-
-# Create your views here.
+from el_pagination.views import AjaxListView
 from store.models import Category, Store, Product
+from cart.forms import CartAddProductForm
 
 
 def page_not_found_view(request, exception):
@@ -26,7 +26,6 @@ def accueil(request):
 
 
 def listofstore(request):
-
     stores = Store.objects.all()
     print("stores", stores)
     context = {
@@ -36,23 +35,24 @@ def listofstore(request):
 
 
 def productdetails(request, pk):
-
     otherproducts = None
-    product = get_object_or_404(Product, code=pk)
+    product = get_object_or_404(Product, pk=pk)
     if product is not None:
-        otherproducts = Product.objects.filter(store=product.store)
+        otherproducts = Product.objects.filter(Q(store_id=product.store.id) & ~Q(id__in=[product.pk,]))
         print('otherproducts', otherproducts)
 
+    cart_form = CartAddProductForm()
 
     context = {
         'product': product,
         'otherproducts': otherproducts,
+        'cart_form': cart_form,
 
     }
     return render(request, 'frontend/detail-product.html', context)
 
-def storedetails(request, pk):
 
+def storedetails(request, pk):
     products = None
     store = get_object_or_404(Store, code=pk)
     if store is not None:
@@ -68,3 +68,13 @@ def storedetails(request, pk):
 
 def resetpassword(request):
     return render(request, 'frontend/forgot-password.html')
+
+
+class StoreListView(AjaxListView):
+    """Class for pagination of store list"""
+    context_object_name = 'stores'
+    template_name = 'frontend/store.html'
+    page_template = 'frontend/store-list-ajax.html'
+
+    def get_queryset(self):
+        return Store.objects.all()

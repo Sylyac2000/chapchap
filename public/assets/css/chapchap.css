@@ -31,3 +31,19 @@ a.delete {
 .swal2-html-container{
     font-size: 1.4em !important;
 }
+
+
+.text-right {
+    text-align:right;
+}
+
+
+a.button.light {
+    color:#666;
+    background:#ededed;
+}
+
+input[type=submit] {
+    padding:0 !important;
+    height:auto !important;
+}

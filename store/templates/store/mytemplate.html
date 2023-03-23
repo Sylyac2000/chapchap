@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CHAPCHAP|| Add Store  {% endblock %}
+
+{% block css %}
+    {# add some css link here#}
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/sal.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/base.css' %}">
+    <link href="{% static 'assets/vendor/datatables/datatables.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/chapchap.css' %}">
+    <style>
+    .red {
+        color: red;
+        text-align: center;
+    }
+    .qrcode {
+
+        text-align: center;
+        margin-top: 200px;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+
+<h1 class="red text-center">Please scan this code to visit my store.</h1>
+    <br>
+    <br>
+<img class="qrcode ml-5 mt-5" src="data:image/png;base64,{{ base64_image }}" alt="QR code">
+
+    </div>
+{% endblock %}

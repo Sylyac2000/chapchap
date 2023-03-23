@@ -22,7 +22,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
+    path('cart/', include('cart.urls')),
     path('myaccount/', include('myaccount.urls')),
+    path('orders/', include('orders.urls')),
     path('store/', include('store.urls')),
     path('summernote/', include('django_summernote.urls')), # for summernote
 ]

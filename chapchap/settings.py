@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+# from django.conf.global_settings import TEMPLATES
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,14 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize', # pour formater les prix
 
     #custom
     'django_summernote',
+    'el_pagination',
 
     #local
     'frontend',
     'myaccount',
     'store',
+    'cart.apps.CartConfig',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -74,12 +80,17 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.context_processors.add_datas_to_context',
+                'django.template.context_processors.request',  ## For EL-pagination
+                'cart.context_processors.cart',  ## For cart
 
             ],
         },
     },
 ]
 
+# pagination django-el-pagination
+# TEMPLATES[0]['OPTIONS']['context_processors'].insert(0, 'django.core.context_processors.request')
+EL_PAGINATION_PER_PAGE = 3
 WSGI_APPLICATION = 'chapchap.wsgi.application'
 
 
@@ -201,3 +212,7 @@ SUMMERNOTE_CONFIG = {
 LOGIN_REDIRECT_URL= '/myaccount/dashboard'
 LOGIN_URL= '/login'
 LOGOUT_REDIRECT_URL = '/'
+
+# CART
+CART_SESSION_ID = 'cart' # the cart in the user session
+# ====
