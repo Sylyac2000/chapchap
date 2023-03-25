@@ -1,4 +1,6 @@
-"""this module contains models of orders app"""
+#!/usr/bin/env python3
+"""This module is about : models.py, contains models of orders app
+"""
 from django.db import models
 
 from frontend.models import Utilisateur
@@ -9,15 +11,15 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
-    phone = models.CharField(max_length=20, null=True)
+    phone = models.CharField(max_length=20)
     address = models.CharField(max_length=250)
-    postal_code = models.CharField(max_length=20)
+    postal_code = models.CharField(max_length=20, null=True)
     city = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
     utilisateur = models.ForeignKey(Utilisateur,
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ['-created']
