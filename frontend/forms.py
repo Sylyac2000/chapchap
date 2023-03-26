@@ -1,4 +1,6 @@
-"""Forms in frontend app """
+#!/usr/bin/env python3
+"""This module is about : forms.py in frontend app
+"""
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm, UserChangeForm
 from django.core.validators import validate_email

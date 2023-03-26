@@ -1,4 +1,6 @@
-"""User model"""
+#!/usr/bin/env python3
+"""This module is about : models.py
+"""
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 

@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+"""This module is about : urls.py
+"""
 from django.urls import path
 
 from frontend.controller.LoginPage import LoginPageView

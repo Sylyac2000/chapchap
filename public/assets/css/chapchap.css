@@ -47,3 +47,8 @@ input[type=submit] {
     padding:0 !important;
     height:auto !important;
 }
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+}

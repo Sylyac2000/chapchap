@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+"""This module is about : admin.py
+"""
 from django.contrib import admin
 from django.contrib.admin.forms import AdminPasswordChangeForm
 

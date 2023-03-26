@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-""" frontend view
+#!/usr/bin/env python3
+"""This module is about : views.py
 """
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
@@ -9,11 +9,14 @@ from cart.forms import CartAddProductForm
 
 
 def page_not_found_view(request, exception):
+    """page not found function
+    """
     context = {}
     return render(request, 'frontend/404.html', context)
 
 
 def accueil(request):
+    """Home page function"""
     categories = Category.objects.all()
     stores = Store.objects.all()
     print('categories', categories)
