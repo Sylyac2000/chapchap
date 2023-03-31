@@ -1,5 +1,6 @@
 # CHAPCHAP - Portfolio project
 CHAPCHAP is an ecommerce web application project i did at ALX AFRICA.
+This project description is here: https://docs.google.com/presentation/d/1ilno2VFetCfS2AhE-3GGP56iIXHIpauntbUj-Xd6A8U/edit?usp=sharing
 
 #### Functionalities:
 * User registration
