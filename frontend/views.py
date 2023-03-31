@@ -81,3 +81,12 @@ class StoreListView(AjaxListView):
 
     def get_queryset(self):
         return Store.objects.all()
+
+class ShopListView(AjaxListView):
+    """Class for pagination of product list"""
+    context_object_name = 'products'
+    template_name = 'frontend/shop.html'
+    page_template = 'frontend/shop-list-ajax.html'
+
+    def get_queryset(self):
+        return Product.objects.all()

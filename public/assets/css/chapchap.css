@@ -52,3 +52,23 @@ input[type=submit] {
   margin-bottom: 15px;
   position: relative;
 }
+.axil-section-gap {
+    padding: 40px 0;
+}
+
+.axil-product .cart-action li.select-option input[type=submit] {
+    position: relative;
+    height: 40px;
+    line-height: 39px;
+    padding: 0 18px !important;
+    display: block;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    transition: .3s;
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,.06);
+    position: relative;
+    z-index: 1;
+}

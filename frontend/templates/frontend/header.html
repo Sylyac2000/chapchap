@@ -13,7 +13,7 @@
         </div>
         <button class="remove-campaign"><i class="fal fa-times"></i></button>
     </div>
-    <div class="axil-header-top mt-2 d-none">
+    <div class="axil-header-top mt-2">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-6">
@@ -32,11 +32,11 @@
                         <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                USD
+                                XOF
                             </button>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">XOF</a></li>
                                 <li><a class="dropdown-item" href="#">USD</a></li>
-                                <li><a class="dropdown-item" href="#">AUD</a></li>
                                 <li><a class="dropdown-item" href="#">EUR</a></li>
                             </ul>
                         </div>
@@ -91,6 +91,20 @@
                                 </ul>
                             </li>
                             <li>
+                                <a href="{% url 'frontend:shop' %}">Shop</a>
+                                <ul class="axil-submenu d-none">
+                                    <li><a href="shop-sidebar.html">Shop With Sidebar</a></li>
+                                    <li><a href="shop.html">Shop no Sidebar</a></li>
+                                    <li><a href="single-product.html">Product Variation 1</a></li>
+                                    <li><a href="detail-store.html">Product Variation 2</a></li>
+                                    <li><a href="single-product-3.html">Product Variation 3</a></li>
+                                    <li><a href="single-product-4.html">Product Variation 4</a></li>
+                                    <li><a href="single-product-5.html">Product Variation 5</a></li>
+                                    <li><a href="single-product-6.html">Product Variation 6</a></li>
+                                    <li><a href="single-product-7.html">Product Variation 7</a></li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="{% url 'frontend:stores' %}">Store</a>
                                 <ul class="axil-submenu d-none">
                                     <li><a href="shop-sidebar.html">Shop With Sidebar</a></li>
@@ -121,7 +135,7 @@
                                     <li><a href="typography.html">Typography</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about-us.html">About</a></li>
+                            <li><a href="#">About</a></li>
                             <li class="menu-item-has-children d-none">
                                 <a href="#">Blog</a>
                                 <ul class="axil-submenu">
@@ -134,7 +148,7 @@
                                     <li><a href="blog-quote.html">Quote Post</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>
                     <!-- End Mainmanu Nav -->
@@ -185,7 +199,7 @@
                                     <li>
                                         <a href="#">Support</a>
                                     </li>
-                                    <li>
+                                    <li class="d-none">
                                         <a href="#">Language</a>
                                     </li>
                                 </ul>

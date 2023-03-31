@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
+
 # from django.conf.global_settings import TEMPLATES
 
 
@@ -31,7 +33,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 ALLOWED_HOSTS = []
-
+BASE_URL = 'https://mysylla.tech'
 
 # Application definition
 
@@ -103,7 +105,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -216,3 +217,15 @@ LOGOUT_REDIRECT_URL = '/'
 # CART
 CART_SESSION_ID = 'cart' # the cart in the user session
 # ====
+
+
+# upload size
+
+# Set the maximum size for an entire request to be 10 MB
+# (i.e., 10 * 1024 * 1024 bytes)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
+
+# Set the maximum size for a single file to be 5 MB
+# (i.e., 5 * 1024 * 1024 bytes)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
+# ========

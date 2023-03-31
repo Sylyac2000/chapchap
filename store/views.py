@@ -13,6 +13,7 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
+from chapchap import settings
 from frontend.models import Utilisateur
 from store.forms import StoreForm, ProductForm
 from store.models import Store, Product
@@ -110,10 +111,14 @@ class MyViewPdf(View):
             store = get_object_or_404(Store, code=code)
         else:
             return HttpResponse('Error generating PDF, no valid store code', status=400)
+        # from settings.py, BASE_URL is configured
+        BASE_URL = settings.BASE_URL
 
         store_relative_url = store.get_absolute_url()
-        store_absolute_url = request.build_absolute_uri(store_relative_url)
-        print(store_relative_url, store_absolute_url)
+        store_absolute_url = BASE_URL + reverse('frontend:detail-store', args=[code])
+
+
+        # print(store_relative_url, store_absolute_url)
 
         # Generate the QR code
         qr = qrcode.QRCode(

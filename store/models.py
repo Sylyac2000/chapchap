@@ -15,7 +15,7 @@ from utils.utility import PathAndRename
 
 class Store(models.Model):
     name = models.CharField(max_length=50)
-    photo = models.ImageField(upload_to=PathAndRename('uploads/store'), max_length=1000)
+    photo = models.ImageField(upload_to=PathAndRename('uploads/store'))
     code = models.CharField(default=uuid.uuid4, unique=True, max_length=100)
     phone = models.CharField(max_length=20)
     description = models.TextField()

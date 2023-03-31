@@ -22,11 +22,11 @@
                             </div>
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    USD
+                                    XOF
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">XOF</a></li>
                                     <li><a class="dropdown-item" href="#">USD</a></li>
-                                    <li><a class="dropdown-item" href="#">AUD</a></li>
                                     <li><a class="dropdown-item" href="#">EUR</a></li>
                                 </ul>
                             </div>
@@ -156,16 +156,28 @@
                                 </a>
                             </li>
                             <li class="wishlist">
-                                <a href="wishlist.html">
+                                <a href="#wishlist.html">
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </li>
-                            <li class="shopping-cart">
-                                <a href="#" class="cart-dropdown-btn">
-                                    <span class="cart-count">3</span>
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </li>
+                             <li class="shopping-cart">
+                            <a href="{% url "cart:cart_detail" %}" class="cart-dropdown-btn d-none">zz
+                            </a><a href="{% url "cart:cart_detail" %}" class="cart-dropdown-btn">
+
+                                    {% with total_items=cart|length %}
+                                        {% if total_items > 0 %}
+                                        <span class="cart-count">
+                {{ total_items }}
+
+
+                                        {% else %}
+                                            <span class="cart-count d-none">
+                                        {% endif %}
+                                    {% endwith %}
+                                </span>
+                                <i class="flaticon-shopping-cart"></i>
+                            </a>
+                        </li>
                             <li class="my-account">
                                 <a href="javascript:void(0)">
                                     <i class="flaticon-person"></i>
@@ -174,9 +186,9 @@
                                     <span class="title">QUICKLINKS</span>
                                     <ul>
                                         <li>
-                                            <a href="my-account.html">My Account</a>
+                                            <a href="{% url 'myaccount:dashboard' %}">My Account</a>
                                         </li>
-                                        <li>
+                                        <li class="d-none">
                                             <a href="#">Initiate return</a>
                                         </li>
                                         <li>
@@ -187,7 +199,7 @@
                                         </li>
                                     </ul>
                                     <a href="{% url 'myaccount:logout' %}" class="axil-btn btn-bg-primary">sign out</a>
-                                    <div class="reg-footer text-center">No account yet? <a href="sign-up.html" class="btn-link">REGISTER HERE.</a></div>
+                                    <div class="reg-footer text-center d-none">No account yet? <a href="sign-up.html" class="btn-link">REGISTER HERE.</a></div>
                                 </div>
                             </li>
                             <li class="axil-mobile-toggle">
